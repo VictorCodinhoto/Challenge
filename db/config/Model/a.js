@@ -8,3 +8,6 @@ const A = db.sequelize.define('nomeTabela',{
         type:db.Sequelize.STRING
     }
 })
+// criar uma tabela pelo javascript pela função sync, forçar uma criação, se ja existir ela é apagada e criada outra
+//A.sync({force: true})
+module.exports = A
