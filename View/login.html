@@ -18,24 +18,37 @@
         <div class="row mt-3  ">
             <label class=" col-6 text-right" for="a"> Digite o seu email aqui:</label>
             <div class="col-3">
-                <input type="email" placeholder="Ex:xxxxxxxxxx@email.com" id="a" class="a"></input>
+                <input type="email" placeholder="Ex:xxxxxxxxxx@email.com" id="user"></input>
             </div>
         </div>
         <div class="row mt-3  ">
-            <label class=" col-6 text-right" for="a"> Digite o seu email aqui:</label>
+            <label class=" col-6 text-right" for="a"> Digite a sua senha aqui:</label>
             <div class="col-3">
-                <input type="password" placeholder="senha123" id="a" class="a"></input>
+                <input type="password" placeholder="senha123" id="senha"></input>
             </div>
         </div>
         <div class="row">
             <a class="col-12 mt-4 text-center" href="./cadastrar.html">Não possui login? Cadastre aqui!</a>
         </div>
        <div class="row justify-content-center">
-        <button type="button" class="btn btn-primary col-8  mt-5">Fazer Login</button>
+        <button type="button" class="btn btn-primary col-8  mt-5" onclick = "logar()">Fazer Login</button>
 
        </div>
        
+       <script>
+         function logar(){
+            var user = document.getElementById('user').value;
+            var senha = document.getElementById('senha').value;
 
+            if(user == "root" && senha == "root"){
+                windows.alert("sucesso")
+            }
+            else{
+                windows.alert("Usuário ou senha incorretos!")
+            }
+         }
+
+       </script>
           
                 
         
