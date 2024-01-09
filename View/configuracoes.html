@@ -5,12 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Configurações</title>
+    <style>
+        .preto{
+            background-color: black;
+            transition: ease-in-out 0.5s;
+            color:white
+        }
+        .branco{
+            background-color: white;
+            transition: ease-in-out 0.5s;
+            
+        }
+    </style>
 </head>
 <body>
     <h1 class="text-center mt-3">Configurações</h1>
     <div class="row justify-content-center  mt-4">
-        <button class="btn btn-primary col-4 mr-4">Informações da conta</button>
-        <button class="btn btn-primary col-4">Mudar tema</button>
+        <button class="btn btn-primary col-4 mr-4" id="botao2">Tema Claro</button>
+        <button class="btn btn-primary col-4" id="botao">Tema Escuro</button>
     </div>
     
     <div class="row justify-content-center  mt-4">
@@ -19,4 +31,12 @@
     </div>
     
 </body>
+<script>
+    document.getElementById('botao').addEventListener("click", function(){
+        document.querySelector("body").setAttribute("class", "preto"); 
+    })
+        document.getElementById('botao2').addEventListener("click", function(){
+        document.querySelector("body").setAttribute("class","branco");
+    })
+</script>
 </html>
