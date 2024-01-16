@@ -1,6 +1,6 @@
 const db = require ("./db")
 
-const A = db.sequelize.define('nomeTabela',{
+const A = db.sequelize.define('users',{
     user: {
         type: db.Sequelize.STRING
     },
