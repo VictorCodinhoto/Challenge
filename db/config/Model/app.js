@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const a =  require('./a')
+const login =  require('./login')
 
 
 var jsonParser = bodyParser.json()
@@ -20,9 +20,9 @@ app.get("/login", function(req,res){
 
 app.post("/cadastro", function(req,res){
      //res.send("nome: " +  req.body.loginCadastro +  "senha: " + req.body.senhaCadastro)
-     a.create({
+     login.create({
         user : req.body.loginCadastro,
-        senha : req.body.senhaCadastro  
+        password : req.body.senhaCadastro  
     }).then(function(){
         res.send("sucesso")
     }).catch(function(erro){
