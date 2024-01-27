@@ -6,17 +6,23 @@ function getRandNum(){
 
 function createPost( numPosts = 10){
     let i = 0
+
+    const postContainer = document.createElement('div')
     while(i < numPosts){
-    const postConteiner = document.createElement('div')
+    
     const post = document.createElement('div')
+    const postBox = document.createElement('div')
     const comment = document.createElement('input')
     post.classList.add('post')
     comment.classList.add('comment')
-    postConteiner.classList.add('post-conteiner')
+    postContainer.classList.add('post-container')
+    postBox.classList.add('post-box')
     
-    postConteiner.appendChild(post)
-    post.appendChild(comment)
-    document.body.appendChild(postConteiner)
+    
+    postContainer.appendChild(postBox)
+    postBox.appendChild(post)
+    postBox.appendChild(comment)
+    document.body.appendChild(postContainer)
     
     loadImgs(post)
     i++
