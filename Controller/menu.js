@@ -9,10 +9,13 @@ function createPost( numPosts = 10){
     while(i < numPosts){
     const postConteiner = document.createElement('div')
     const post = document.createElement('div')
+    const comment = document.createElement('input')
     post.classList.add('post')
+    comment.classList.add('comment')
     postConteiner.classList.add('post-conteiner')
-
+    
     postConteiner.appendChild(post)
+    post.appendChild(comment)
     document.body.appendChild(postConteiner)
     
     loadImgs(post)
