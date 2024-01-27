@@ -1,56 +1,43 @@
-const mysql = require('mysql2');
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const login =  require('./login')
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'test'
-  });
 
-connection.connect(function(err){
-    if (err){
-        console.log("Houve um erro em conectar com o banco de dados");
-    }
-    else{
-        console.log("Conexão realizada com sucesso");
-    }
-            
+var jsonParser = bodyParser.json()
+
+
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+
+app.get("/cadastrar", function(req,res){
+    res.render("cadastrar")
+});
+app.get("/login", function(req,res){
+    res.render("login")
 });
 
-connection.query("Select id, email,senha FROM contas", function(err,rows,fields){
-    if(err){
-        console.log("Houve um erro"+ err);
-    }
-    else{
-        console.log("Query realizada com sucesso!, Resultado:" + rows);
-    }
+
+app.post("/cadastro", function(req,res){
+     //res.send("nome: " +  req.body.loginCadastro +  "senha: " + req.body.senhaCadastro)
+     login.create({
+        user : req.body.loginCadastro,
+        password : req.body.senhaCadastro  
+    }).then(function(){
+        res.send("sucesso")
+    }).catch(function(erro){
+        res.send("Deu erro" + erro)
+    })
+
 });
+app.post("/logar", function(req,res){
+    res.send("login feito com sucesso, olá " + req.body.loginCadastro)
 
-  connection.query(
-    'SELECT * FROM `table` WHERE `name` = "Page" AND `age` > 45',
-    function(err, results, fields) {
-      console.log(results); // results contains rows returned by server
-      console.log(fields); // fields contains extra meta data about results, if available
-    }
-  );
-  
-  // with placeholder
-  connection.query(
-    'SELECT * FROM `table` WHERE `name` = ? AND `age` > ?',
-    ['Page', 45],
-    function(err, results) {
-      console.log(results);
-    }
-);
+});
+app.listen(8080);
 
 
-connection.execute(
-    'SELECT * FROM `table` WHERE `name` = ? AND `age` > ?',
-    ['Rick C-137', 53],
-    function(err, results, fields) {
-      console.log(results); // results contains rows returned by server
-      console.log(fields); // fields contains extra meta data about results, if available
-    }
-)
+
+
 
 
